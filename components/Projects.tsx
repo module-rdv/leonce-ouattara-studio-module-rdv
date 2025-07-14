@@ -15,11 +15,13 @@ import {
   Eye
 } from 'lucide-react';
 import ProjectModal from './projects/ProjectModal';
+import AppointmentModal from './appointment/AppointmentModal';
 
 const Projects = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isAppointmentModalOpen, setIsAppointmentModalOpen] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -375,6 +377,7 @@ const Projects = () => {
                   <Github className="w-5 h-5" />
                   <span>Voir GitHub</span>
                 </button>
+                  onClick={() => setIsAppointmentModalOpen(true)}
                 <button className="px-6 py-3 rounded-full border border-[#00F5FF] text-[#00F5FF] hover:bg-[#00F5FF] hover:text-white transition-all flex items-center space-x-2">
                   <span>Démarrer un projet</span>
                   <ArrowRight className="w-5 h-5" />
@@ -393,6 +396,13 @@ const Projects = () => {
           setIsModalOpen(false);
           setSelectedProject(null);
         }}
+      />
+
+      {/* Appointment Modal */}
+      <AppointmentModal
+        isOpen={isAppointmentModalOpen}
+        onClose={() => setIsAppointmentModalOpen(false)}
+        triggerType="rdv"
       />
     </section>
   );

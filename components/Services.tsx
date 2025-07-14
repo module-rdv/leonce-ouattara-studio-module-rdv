@@ -20,9 +20,12 @@ import {
   Clock,
   Euro
 } from 'lucide-react';
+import AppointmentModal from './appointment/AppointmentModal';
 
 const Services = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isAppointmentModalOpen, setIsAppointmentModalOpen] = useState(false);
+  const [appointmentTriggerType, setAppointmentTriggerType] = useState<'rdv' | 'devis' | 'reservation'>('devis');
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -353,6 +356,10 @@ const Services = () => {
                     </div>
                     
                     <button className="w-full py-3 px-6 bg-gradient-to-r from-[#00F5FF]/20 to-[#9D4EDD]/20 border border-[#00F5FF]/30 rounded-xl text-[#00F5FF] hover:bg-gradient-to-r hover:from-[#00F5FF]/30 hover:to-[#9D4EDD]/30 hover:border-[#00F5FF]/50 transition-all duration-300 flex items-center justify-center space-x-2 group/btn">
+                      onClick={() => {
+                        setAppointmentTriggerType('devis');
+                        setIsAppointmentModalOpen(true);
+                      }}
                       <span className="font-medium">Demander un devis</span>
                       <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                     </button>
@@ -434,6 +441,10 @@ const Services = () => {
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <button className="btn-primary px-8 py-4 rounded-full text-white font-semibold flex items-center space-x-3 group/btn relative overflow-hidden">
+                    onClick={() => {
+                      setAppointmentTriggerType('devis');
+                      setIsAppointmentModalOpen(true);
+                    }}
                     <span className="relative z-10">Demander un devis</span>
                     <ArrowRight className="w-5 h-5 relative z-10 group-hover/btn:translate-x-1 transition-transform" />
                     <div className="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700"></div>
@@ -449,6 +460,13 @@ const Services = () => {
           </div>
         </div>
       </div>
+
+      {/* Appointment Modal */}
+      <AppointmentModal
+        isOpen={isAppointmentModalOpen}
+        onClose={() => setIsAppointmentModalOpen(false)}
+        triggerType={appointmentTriggerType}
+      />
     </section>
   );
 };

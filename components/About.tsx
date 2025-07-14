@@ -15,10 +15,12 @@ import {
   TrendingUp,
   Shield
 } from 'lucide-react';
+import AppointmentModal from './appointment/AppointmentModal';
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [visibleCards, setVisibleCards] = useState<number[]>([]);
+  const [isAppointmentModalOpen, setIsAppointmentModalOpen] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -371,6 +373,7 @@ const About = () => {
                     Discutons de votre projet et voyons comment je peux vous aider à atteindre vos objectifs digitaux.
                   </p>
                   
+                    onClick={() => setIsAppointmentModalOpen(true)}
                   <button className="btn-primary px-8 py-4 rounded-full text-white font-semibold flex items-center space-x-3 mx-auto group/btn relative overflow-hidden">
                     <span className="relative z-10">Contactez-moi</span>
                     <ArrowRight className="w-5 h-5 relative z-10 group-hover/btn:translate-x-1 transition-transform" />
@@ -382,6 +385,13 @@ const About = () => {
           </div>
         </div>
       </div>
+
+      {/* Appointment Modal */}
+      <AppointmentModal
+        isOpen={isAppointmentModalOpen}
+        onClose={() => setIsAppointmentModalOpen(false)}
+        triggerType="rdv"
+      />
     </section>
   );
 };

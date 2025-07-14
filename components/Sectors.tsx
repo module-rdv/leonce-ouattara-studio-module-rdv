@@ -13,9 +13,11 @@ import {
   CheckCircle,
   Target
 } from 'lucide-react';
+import AppointmentModal from './appointment/AppointmentModal';
 
 const Sectors = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isAppointmentModalOpen, setIsAppointmentModalOpen] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -221,6 +223,7 @@ const Sectors = () => {
               <p className="text-gray-400 mb-6">
                 Chaque projet est unique. Discutons de vos besoins spécifiques et voyons comment mes compétences peuvent s'adapter à votre domaine.
               </p>
+                onClick={() => setIsAppointmentModalOpen(true)}
               <button className="btn-primary px-8 py-3 rounded-full text-white font-medium flex items-center space-x-2 mx-auto hover:shadow-lg transition-all">
                 <span>Parlons de votre projet</span>
                 <ArrowRight className="w-5 h-5" />
@@ -229,6 +232,13 @@ const Sectors = () => {
           </div>
         </div>
       </div>
+
+      {/* Appointment Modal */}
+      <AppointmentModal
+        isOpen={isAppointmentModalOpen}
+        onClose={() => setIsAppointmentModalOpen(false)}
+        triggerType="rdv"
+      />
     </section>
   );
 };

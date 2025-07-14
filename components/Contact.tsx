@@ -14,9 +14,11 @@ import {
   Linkedin,
   Twitter
 } from 'lucide-react';
+import AppointmentModal from './appointment/AppointmentModal';
 
 const Contact = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isAppointmentModalOpen, setIsAppointmentModalOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -351,6 +353,7 @@ const Contact = () => {
                 <p className="text-gray-400 mb-6">
                   Préférez-vous discuter de vive voix ? Réservez un créneau de 30 minutes gratuit pour échanger sur votre projet.
                 </p>
+                  onClick={() => setIsAppointmentModalOpen(true)}
                 <button className="btn-primary px-6 py-3 rounded-lg text-white font-medium flex items-center space-x-2">
                   <Calendar className="w-5 h-5" />
                   <span>Réserver un créneau</span>
@@ -360,6 +363,13 @@ const Contact = () => {
           </div>
         </div>
       </div>
+
+      {/* Appointment Modal */}
+      <AppointmentModal
+        isOpen={isAppointmentModalOpen}
+        onClose={() => setIsAppointmentModalOpen(false)}
+        triggerType="reservation"
+      />
     </section>
   );
 };

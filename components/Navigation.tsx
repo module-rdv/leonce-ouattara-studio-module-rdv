@@ -2,9 +2,11 @@
 
 import { useState, useEffect } from 'react';
 import { Menu, X, Code, Github, Linkedin, Mail, ChevronDown } from 'lucide-react';
+import AppointmentModal from './appointment/AppointmentModal';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isAppointmentModalOpen, setIsAppointmentModalOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
   const [isScrolled, setIsScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -186,10 +188,10 @@ const Navigation = () => {
 
               {/* Bouton CTA */}
               <button 
-                onClick={() => scrollToSection('contact')}
+                onClick={() => setIsAppointmentModalOpen(true)}
                 className="relative px-6 py-2 bg-gradient-to-r from-[#00F5FF] to-[#9D4EDD] rounded-full text-white font-medium text-sm overflow-hidden group hover:shadow-lg hover:shadow-[#00F5FF]/25 transition-all duration-300"
               >
-                <span className="relative z-10">Contact</span>
+                <span className="relative z-10">Prendre RDV</span>
                 <div className="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
               </button>
             </div>
@@ -264,10 +266,13 @@ const Navigation = () => {
 
               {/* CTA Mobile */}
               <button 
-                onClick={() => scrollToSection('contact')}
+                onClick={() => {
+                  setIsAppointmentModalOpen(true);
+                  setIsOpen(false);
+                }}
                 className="w-full mt-4 py-3 bg-gradient-to-r from-[#00F5FF] to-[#9D4EDD] rounded-xl text-white font-medium overflow-hidden group relative"
               >
-                <span className="relative z-10">Prendre contact</span>
+                <span className="relative z-10">Prendre RDV</span>
                 <div className="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
               </button>
             </div>
@@ -282,6 +287,13 @@ const Navigation = () => {
           onClick={() => setIsOpen(false)}
         />
       )}
+
+      {/* Appointment Modal */}
+      <AppointmentModal
+        isOpen={isAppointmentModalOpen}
+        onClose={() => setIsAppointmentModalOpen(false)}
+        triggerType="rdv"
+      />
     </>
   );
 };
