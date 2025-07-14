@@ -373,8 +373,8 @@ const About = () => {
                     Discutons de votre projet et voyons comment je peux vous aider à atteindre vos objectifs digitaux.
                   </p>
                   
-                    onClick={() => setIsAppointmentModalOpen(true)}
                   <button className="btn-primary px-8 py-4 rounded-full text-white font-semibold flex items-center space-x-3 mx-auto group/btn relative overflow-hidden">
+                    onClick={() => setIsAppointmentModalOpen(true)}
                     <span className="relative z-10">Contactez-moi</span>
                     <ArrowRight className="w-5 h-5 relative z-10 group-hover/btn:translate-x-1 transition-transform" />
                     <div className="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700"></div>

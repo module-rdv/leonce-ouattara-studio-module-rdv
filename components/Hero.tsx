@@ -190,8 +190,10 @@ const Hero = () => {
 
           {/* Boutons d'action avec effets avancés */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
-            <button className="group relative btn-primary px-8 py-4 rounded-full text-white font-semibold flex items-center space-x-3 overflow-hidden">
+            <button 
               onClick={() => setIsAppointmentModalOpen(true)}
+              className="group relative btn-primary px-8 py-4 rounded-full text-white font-semibold flex items-center space-x-3 overflow-hidden"
+            >
               <div className="absolute inset-0 bg-gradient-to-r from-[#00F5FF] to-[#9D4EDD] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <Calendar className="w-5 h-5 relative z-10 group-hover:rotate-12 transition-transform" />
               <span className="relative z-10">Prendre RDV</span>

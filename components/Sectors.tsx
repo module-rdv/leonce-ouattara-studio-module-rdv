@@ -223,8 +223,10 @@ const Sectors = () => {
               <p className="text-gray-400 mb-6">
                 Chaque projet est unique. Discutons de vos besoins spécifiques et voyons comment mes compétences peuvent s'adapter à votre domaine.
               </p>
+              <button 
                 onClick={() => setIsAppointmentModalOpen(true)}
-              <button className="btn-primary px-8 py-3 rounded-full text-white font-medium flex items-center space-x-2 mx-auto hover:shadow-lg transition-all">
+                className="btn-primary px-8 py-3 rounded-full text-white font-medium flex items-center space-x-2 mx-auto hover:shadow-lg transition-all"
+              >
                 <span>Parlons de votre projet</span>
                 <ArrowRight className="w-5 h-5" />
               </button>
